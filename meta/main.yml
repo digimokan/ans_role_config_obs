@@ -1,0 +1,17 @@
+galaxy_info:
+  author: digimokan
+  description: "Install and configure the OBS video-recording and streaming application"
+  license: "MIT"
+  min_ansible_version: 2.5
+  platforms:
+    - name: Archlinux
+      versions:
+        - all
+    - name: FreeBSD
+      versions:
+        - all
+  galaxy_tags:
+    - archlinux
+    - freebsd
+    - obs
+

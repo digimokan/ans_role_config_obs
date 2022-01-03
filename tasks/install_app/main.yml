@@ -1,0 +1,7 @@
+- name: "Install the 'obs-studio' package"
+  ansible.builtin.package:
+    name: obs-studio
+    state: present
+  become: true
+  become_user: root
+
