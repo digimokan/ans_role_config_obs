@@ -58,6 +58,9 @@ Install and configure the OBS video-recording and streaming application.
        - name: "Install and configure the OBS video-recording application"
          ansible.builtin.include_role:
            name: ans_role_config_obs
+         vars:
+           obs_studio_user_name: "user2"
+           obs_studio_user_video_save_dir: "/home/user2"
    ```
 
 ## Role Options
