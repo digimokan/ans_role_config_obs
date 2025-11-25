@@ -1,0 +1,43 @@
+- name: "Create user Untitled profile directory '{{ untitled_profile_dir }}', if not exist"
+  ansible.builtin.file:
+    path: "{{ untitled_profile_dir }}"
+    state: directory
+  vars:
+    untitled_profile_dir: "{{ obs_studio_user_untitled_profile_path | dirname }}"
+  become: true
+  become_user: "{{ obs_studio_user_name }}"
+
+- name: "Configure all general user settings sections"
+  community.general.ini_file:
+    path: "{{ obs_studio_user_untitled_profile_path }}"
+    section: "{{ setting.optsec }}"
+    option: "{{ setting.optname }}"
+    value: "{{ setting.optval}}"
+    state: present
+  become: true
+  become_user: "{{ obs_studio_user_name }}"
+  loop:
+    - { optsec: "Output", optname: "Mode", optval: "Simple" }
+    - { optsec: "SimpleOutput", optname: "FilePath", optval: "{{ obs_studio_user_video_save_dir }}" }
+    - { optsec: "SimpleOutput", optname: "RecFormat2", optval: "{{ obs_studio_user_video_rec_format }}" }
+    - { optsec: "SimpleOutput", optname: "RecQuality", optval: "{{ obs_studio_user_video_rec_quality }}" }
+  loop_control:
+    loop_var: setting
+
+- name: "Configure all user settings in the 'Hotkeys' section"
+  community.general.ini_file:
+    path: "{{ obs_studio_user_untitled_profile_path }}"
+    section: "Hotkeys"
+    option: "OBSBasic.{{ setting.optname }}"
+    value: '{"bindings":[{"key":"{{ setting.optval }}"}]}'
+    state: present
+  become: true
+  become_user: "{{ obs_studio_user_name }}"
+  loop:
+    - { optname: "StartRecording", optval: "{{ obs_studio_user_keymap_rec_start }}" }
+    - { optname: "StopRecording", optval: "{{ obs_studio_user_keymap_rec_stop }}" }
+    - { optname: "PauseRecording", optval: "{{ obs_studio_user_keymap_rec_pause }}" }
+    - { optname: "UnpauseRecording", optval: "{{ obs_studio_user_keymap_rec_unpause }}" }
+  loop_control:
+    loop_var: setting
+

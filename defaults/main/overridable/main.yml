@@ -1,0 +1,27 @@
+# path to user's generic/untitled OBS user profile (i.e. settings file)
+obs_studio_user_untitled_profile_path: "/home/{{ obs_studio_user_name }}/.config/obs-studio/basic/profiles/Untitled/basic.ini"
+
+# path to directory where user's recorded videos should be saved
+obs_studio_user_video_save_dir: "/home/{{ obs_studio_user_name }}"
+
+# video recording format:
+#   mkv (Matroska Video)
+#   mpegts (MPEG-Transport-Stream)
+#   mp4 (MPEG-4)
+#   mov (QuickTime)
+#   flv (Flash Video)
+obs_studio_user_video_rec_format: "mkv"
+
+# video recording format:
+#   Small (high quality, medium file size)
+#   Stream (same as input quality)
+#   HQ (indistinguishable quality, large file size)
+#   Lossless (true lossless quality, extremely large file size)
+obs_studio_user_video_rec_quality: "Small"
+
+# hotkeys
+obs_studio_user_keymap_rec_start: "OBS_KEY_F7"
+obs_studio_user_keymap_rec_stop: "OBS_KEY_F7"
+obs_studio_user_keymap_rec_pause: "OBS_KEY_F9"
+obs_studio_user_keymap_rec_unpause: "OBS_KEY_F9"
+
