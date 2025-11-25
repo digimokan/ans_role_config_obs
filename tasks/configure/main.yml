@@ -13,7 +13,7 @@
     section: "{{ setting.optsec }}"
     option: "{{ setting.optname }}"
     value: "{{ setting.optval}}"
-    no_extra_space: true
+    no_extra_spaces: true
     state: present
   become: true
   become_user: "{{ obs_studio_user_name }}"
@@ -31,7 +31,7 @@
     section: "Hotkeys"
     option: "OBSBasic.{{ setting.optname }}"
     value: '{"bindings":[{"key":"{{ setting.optval }}"}]}'
-    no_extra_space: true
+    no_extra_spaces: true
     state: present
   become: true
   become_user: "{{ obs_studio_user_name }}"
