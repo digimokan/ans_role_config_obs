@@ -30,7 +30,7 @@
     path: "{{ obs_studio_user_untitled_profile_path }}"
     section: "Hotkeys"
     option: "OBSBasic.{{ setting.optname }}"
-    value: |
+    value: >-
       {% raw %}"{"bindings":[{"key":"{{ setting.optval }}"}]}{% endraw %}
     no_extra_spaces: true
     state: present
