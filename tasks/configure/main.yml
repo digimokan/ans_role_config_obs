@@ -7,12 +7,13 @@
   become: true
   become_user: "{{ obs_studio_user_name }}"
 
-- name: "Configure all general user settings sections"
+- name: "Configure all general user settings sections in '{{ obs_studio_user_untitled_profile_path }}'"
   community.general.ini_file:
     path: "{{ obs_studio_user_untitled_profile_path }}"
     section: "{{ setting.optsec }}"
     option: "{{ setting.optname }}"
     value: "{{ setting.optval}}"
+    no_extra_space: true
     state: present
   become: true
   become_user: "{{ obs_studio_user_name }}"
@@ -24,12 +25,13 @@
   loop_control:
     loop_var: setting
 
-- name: "Configure all user settings in the 'Hotkeys' section"
+- name: "Configure all user settings in the 'Hotkeys' section in '{{ obs_studio_user_untitled_profile_path }}'"
   community.general.ini_file:
     path: "{{ obs_studio_user_untitled_profile_path }}"
     section: "Hotkeys"
     option: "OBSBasic.{{ setting.optname }}"
     value: '{"bindings":[{"key":"{{ setting.optval }}"}]}'
+    no_extra_space: true
     state: present
   become: true
   become_user: "{{ obs_studio_user_name }}"
