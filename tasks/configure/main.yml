@@ -31,7 +31,7 @@
     section: "Hotkeys"
     option: "OBSBasic.{{ setting.optname }}"
     value: >-
-      {% raw %}"{"bindings":[{"key":"{{ setting.optval }}"}]}{% endraw %}
+      {% raw %}{"bindings":[{"key":"{% endraw %}{{ setting.optval }}{% raw %}"}]}{% endraw %}
     no_extra_spaces: true
     state: present
   become: true
