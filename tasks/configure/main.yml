@@ -30,7 +30,7 @@
     path: "{{ obs_studio_user_untitled_profile_path }}"
     section: "Hotkeys"
     option: "OBSBasic.{{ setting.optname }}"
-    value: "{{ hotkey_prefix | safe }}{{ setting.optval }}{{ hotkey_suffix | safe }}"
+    value: "{{ hotkey_prefix | string }}{{ setting.optval }}{{ hotkey_suffix | string }}"
     # {% raw %}{"bindings":[{"key":"{% endraw %}{{ setting.optval }}{% raw %}"}]}{% endraw %}
     no_extra_spaces: true
     state: present
