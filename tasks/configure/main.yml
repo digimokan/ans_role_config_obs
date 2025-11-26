@@ -30,15 +30,11 @@
     path: "{{ obs_studio_user_untitled_profile_path }}"
     section: "Hotkeys"
     option: "OBSBasic.{{ setting.optname }}"
-    # value: "{{ hotkey_prefix | to_json }}{{ setting.optval }}{{ hotkey_suffix | to_json }}"
-    value: "{{ hotkey_line | to_json }}"
-    # {% raw %}{"bindings":[{"key":"{% endraw %}{{ setting.optval }}{% raw %}"}]}{% endraw %}
+    value: "{{ hotkey_line | to_json(separators=(',', ':')) }}"
     no_extra_spaces: true
     state: present
   vars:
     hotkey_line: '{"bindings":[{"key":"{{ setting.optval }}"}]}'
-    # hotkey_prefix: '{"bindings":[{"key":"'
-    # hotkey_suffix: '"}]}'
   become: true
   become_user: "{{ obs_studio_user_name }}"
   loop:
